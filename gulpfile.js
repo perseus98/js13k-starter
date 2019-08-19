@@ -102,5 +102,5 @@ gulp.task('watch', function () {
     gulp.watch(sourcePaths.mainHtml, ['buildIndex', 'zipBuild']);
 });
 
-gulp.task('build', ['buildJS', 'buildCSS', 'buildIndex', 'zipBuild']);
-gulp.task('default', ['build', 'serve', 'watch']);
+gulp.task('build', gulp.series('buildJS', 'buildCSS', 'buildIndex', 'zipBuild'));
+gulp.task('default', gulp.series('build', 'serve', 'watch'));
